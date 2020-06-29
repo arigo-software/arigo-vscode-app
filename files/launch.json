@@ -1,21 +1,24 @@
 {
-    "version": "0.2.0",
-    "configurations": [
-        {
-            "name": "Attach to remote",
-            "type": "node",
-            "request": "attach",
-            "port": 9229,
-            "address": "your-target-ip",
-            "protocol": "inspector",
-            "localRoot": "${workspaceFolder}",
-            "remoteRoot": "/usr/lib/arigo/rumo/current",
-            "skipFiles": [
-                 "<node_internals>/**/*.js",
-                 "<eval>/*",
-                 "node_modules/**/*.js",
-                 "usr/lib/**/lib/*.js"
-            ]
-        }
-    ]
+	"version": "0.2.0",
+	"configurations": [
+		{
+			"name": "Attach to remote",
+			"type": "node",
+			"request": "attach",
+			"port": 9229,
+			"address": "your-target-ip",
+			"protocol": "inspector",
+			"localRoot": "${workspaceFolder}",
+			"remoteRoot": "/usr/lib/arigo/rumo/rumo_VERSION",
+			"skipFiles": [
+				"<node_internals>/**/*.js",
+				"<eval>/*",
+				"${workspaceFolder}/node_modules/**/*.js",
+				"${workspaceFolder}/addon/**/*.js",
+				"${workspaceFolder}/lib/**/*.js",
+				"${workspaceFolder}/service/**/*.js",
+				"${workspaceFolder}/**/processor.js"
+			]
+		}
+	]
 }
