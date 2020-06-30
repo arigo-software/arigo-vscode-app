@@ -1,4 +1,5 @@
 const https = require("./https");
+const configuration = require("./configuration");
 
 function showHelp(error){
 	let log = error?console.error:console.log;
@@ -26,6 +27,8 @@ async function execute(args){
 }
 
 async function restart(){
+	let config = await configuration.get();
+	console.log(`Restart target "${config.target}"`);
 	await https.PUT("/~/dev/0/fb/develop/dp/restart/dat/value",true);
 }
 
