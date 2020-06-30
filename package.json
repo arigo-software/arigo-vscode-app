@@ -1,6 +1,6 @@
 {
 	"name": "arigo-vscode-app",
-	"version": "1.0.0",
+	"version": "0.0.1",
 	"description": "Prepare Visual Coder for Arigo Software GmbH App developing",
 	"main": "index.js",
 	"scripts": {
