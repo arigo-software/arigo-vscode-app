@@ -1,7 +1,0 @@
-{
-	"target" : "your-target-ip",
-	"ssh-port": 22,
-	"https-port": 443,
-    "username": "admin",
-    "password": "admin"
-}
