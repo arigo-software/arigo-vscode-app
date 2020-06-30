@@ -1,7 +1,11 @@
 #!/usr/bin/env node
 
+process.emitWarning = function(){};
+
 let commands = {
-	target : require("./target")
+	target : require("./target"),
+	"start-mode" : require("./start-mode"),
+	restart : require("./restart")
 };
 
 function showHelp(error){
@@ -24,9 +28,7 @@ function showHelp(error){
 	}
 	log("");
 	log("For help for a command call:");
-	log("npx arigo <command> --showHelp");
-	// console.log("  start-mode   Change the start-mode, none, inspect, inspect-brk");
-	// console.log("  restart      Restart the target");
+	log("npx arigo <command> --help");
 	if (error) process.exit(-1);
 	else process.exit(0);
 }

@@ -87,8 +87,8 @@ async function showConfig(config){
 
 async function setupTarget(config){
 	await configuration.save(config);
-	let version = await getVersion();
 	await setupSftp(config);
+	let version = await getVersion();
 	await setupLauncher(config, version);
 }
 
