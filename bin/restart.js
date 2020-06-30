@@ -13,6 +13,8 @@ function showHelp(error){
 	log("");
 	log(" Show this help");
 	log("   -h    --help");
+	log("");
+	log("Copyright (c) 2014-2020 by ARIGO-Software GmbH. All rights reserved.");
 
 	if (error) process.exit(-1);
 	else process.exit(0);
@@ -27,8 +29,8 @@ async function execute(args){
 }
 
 async function restart(){
-	let config = await configuration.get();
-	console.log(`Restart target "${config.target}"`);
+	let target = await configuration.get();
+	console.log(`Restart target "${target.host}"`);
 	await https.PUT("/~/dev/0/fb/develop/dp/restart/dat/value",true);
 }
 

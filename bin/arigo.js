@@ -29,6 +29,8 @@ function showHelp(error){
 	log("");
 	log("For help for a command call:");
 	log("npx arigo <command> --help");
+	log("");
+	log("Copyright (c) 2014-2020 by ARIGO-Software GmbH. All rights reserved.");
 	if (error) process.exit(-1);
 	else process.exit(0);
 }

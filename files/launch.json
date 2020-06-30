@@ -1,24 +1,4 @@
 {
 	"version": "0.2.0",
-	"configurations": [
-		{
-			"name": "Attach to Arigo target",
-			"type": "node",
-			"request": "attach",
-			"port": 9229,
-			"address": "your-target-ip",
-			"protocol": "inspector",
-			"localRoot": "${workspaceFolder}",
-			"remoteRoot": "/usr/lib/arigo/rumo/rumo_VERSION",
-			"skipFiles": [
-				"<node_internals>/**/*.js",
-				"<eval>/*",
-				"${workspaceFolder}/node_modules/**/*.js",
-				"${workspaceFolder}/addon/**/*.js",
-				"${workspaceFolder}/lib/**/*.js",
-				"${workspaceFolder}/service/**/*.js",
-				"${workspaceFolder}/**/processor.js"
-			]
-		}
-	]
+	"configurations": []
 }

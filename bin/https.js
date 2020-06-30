@@ -2,15 +2,16 @@ const https = require('https');
 const configuration = require("./configuration");
 
 function sendRequest(method){ return async (url, body)=>{
-	let config = await configuration.get();
+	let target = await configuration.get();
+	if (!target) throw "no activated target";
 	let p = new Promise(function(resolve, reject) {
 		let options = {
-			hostname : config.target,
-			port : config["https-port"],
+			hostname : target.host,
+			port : target["https-port"],
 			method : method,
 			path : url,
 			rejectUnauthorized : false,
-			headers : {authorization : "Basic " + base64(config.username + ":" + config.password)}
+			headers : {authorization : "Basic " + base64(target.username + ":" + target.password)}
 		};
 		var req = https.request(options, function(res){
 			res.setEncoding('utf8');

@@ -22,6 +22,8 @@ function showHelp(error){
 	log("");
 	log("usage: npx arigo start-mode [options]");
 	log("   -h    --help            Shows this help.");
+	log("");
+	log("Copyright (c) 2014-2020 by ARIGO-Software GmbH. All rights reserved.");
 
 	if (error) process.exit(-1);
 	else process.exit(0);
@@ -40,8 +42,8 @@ async function execute(args){
 }
 
 async function setStartMode(startMode){
-	let config = await configuration.get();
-	console.log(`Set start mode for target "${config.target}" to "${startMode}"`);
+	let target = await configuration.get();
+	console.log(`Set start mode for target "${target.host}" to "${startMode}"`);
 	await https.PUT("/~/dev/0/fb/develop/dp/nodeDebug/dat/value",startMode);
 }
 
