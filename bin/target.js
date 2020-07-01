@@ -1,6 +1,7 @@
 const fs = require('fs').promises;
 const configuration = require("./configuration");
 const https = require("./https");
+const child_process = require("child_process");
 
 function showHelp(error){
 	let log = error?console.error:console.log;
@@ -106,10 +107,19 @@ async function setupTarget(target){
 }
 
 async function activateTarget(target){
+	let actTarget = await configuration.get();
 	await configuration.activate(target.host);
 	await setupSftp(target);
 	let version = await getVersion();
 	await setupLauncher(target, version);
+	console.log(`Target "${target.host}" activated`);
+	if (actTarget.host !== target.host){
+		console.log("");
+		console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+		console.log("!!  To change the sftp target please save the file .vscode/sftp.json  !!");
+		console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+		child_process.execSync(`code --goto .vscode/sftp.json`);
+	}
 }
 
 async function getVersion(){
