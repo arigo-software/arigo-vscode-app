@@ -5,6 +5,7 @@ process.emitWarning = function(){};
 let commands = {
 	target : require("./target"),
 	"start-mode" : require("./start-mode"),
+	"log-level" : require("./log-level"),
 	restart : require("./restart")
 };
 

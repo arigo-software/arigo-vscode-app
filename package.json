@@ -1,6 +1,6 @@
 {
 	"name": "arigo-vscode-app",
-	"version": "1.0.1",
+	"version": "1.0.2",
 	"description": "Prepare Visual Studio Code for Arigo Software GmbH App developing",
 	"main": "index.js",
 	"scripts": {
@@ -8,9 +8,9 @@
 		"postinstall": "node --no-warnings lib/install.js"
 	},
 	"author": {
-      "name": "Arigo Software GmbH",
-      "email": "develop@arigo.de"
-    },
+		"name": "Arigo Software GmbH",
+		"email": "develop@arigo.de"
+	},
 	"repository": {
 		"type": "git",
 		"url": "git+https://github.com/arigo-software/arigo-vscode-app.git"
@@ -29,6 +29,7 @@
 	},
 	"homepage": "https://github.com/arigo-software/arigo-vscode-app#readme",
 	"dependencies": {
-		"eslint": "latest"
+		"eslint": "latest",
+		"sftp-promises": "latest"
 	}
 }
