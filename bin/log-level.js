@@ -1,6 +1,5 @@
 const configuration = require("./configuration");
 const SFTPClient = require('sftp-promises');
-const { save } = require("./configuration");
 
 function showHelp(error){
 	let log = error?console.error:console.log;
@@ -57,7 +56,6 @@ async function execute(args){
 async function showLogLevel(module){
     let sftpClient = await getSftpClient();
     let config = await readConfig(sftpClient);
-    console.log(config)
 
     let logLevel = config.log && config.log.byModule && config.log.byModule[module];
     if (!logLevel) logLevel = "default";
@@ -69,7 +67,7 @@ async function showLogLevel(module){
 async function removeEntry(module){
     let sftpClient = await getSftpClient();
     let config = await readConfig(sftpClient);
-    if (config.log && 
+    if (config.log &&
         config.log.byModule) delete config.log.byModule[module];
 
     await saveConfig(sftpClient, config);
@@ -83,14 +81,15 @@ async function addEntry(module, logLevel){
     config.log.byModule[module] = logLevel;
 
     await saveConfig(sftpClient, config);
-    
+
 }
 
 async function getSftpClient(){
     let target = await configuration.get();
+	if (!target) throw "no activated target";
     return new SFTPClient({
-        host: target.host, 
-        username: target.username, 
+        host: target.host,
+        username: target.username,
         password: target.password,
         port : target["ssh-port"]
     });
@@ -102,7 +101,7 @@ async function readConfig(sftpClient){
 
 async function saveConfig(sftpClient, config){
     var buf = Buffer.from(JSON.stringify(config, null, 2), 'utf8');
-    await sftpClient.putBuffer(buf, "/config/config.json")
+    await sftpClient.putBuffer(buf, "/config/config.json");
 }
 
 

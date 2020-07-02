@@ -95,6 +95,7 @@ async function execute(args){
 }
 
 async function showTargetConfig(target){
+	if (!target) throw "no activated target";
 	console.log(`Actual config for target "${target.host}"`);
 	console.log(`user:       ${target.username}`);
 	console.log(`ssh-port:   ${target["ssh-port"]}`);
@@ -113,7 +114,7 @@ async function activateTarget(target){
 	let version = await getVersion();
 	await setupLauncher(target, version);
 	console.log(`Target "${target.host}" activated`);
-	if (actTarget.host !== target.host){
+	if (!actTarget || actTarget.host !== target.host){
 		console.log("");
 		console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 		console.log("!!  To change the sftp target please save the file .vscode/sftp.json  !!");

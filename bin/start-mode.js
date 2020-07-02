@@ -43,6 +43,7 @@ async function execute(args){
 
 async function setStartMode(startMode){
 	let target = await configuration.get();
+	if (!target) throw "no activated target";
 	console.log(`Set start mode for target "${target.host}" to "${startMode}"`);
 	await https.PUT("/~/dev/0/fb/develop/dp/nodeDebug/dat/value",startMode);
 }

@@ -1,6 +1,6 @@
 {
 	"name": "arigo-vscode-app",
-	"version": "1.0.3",
+	"version": "1.0.4",
 	"description": "Prepare Visual Studio Code for Arigo Software GmbH App developing",
 	"main": "index.js",
 	"scripts": {

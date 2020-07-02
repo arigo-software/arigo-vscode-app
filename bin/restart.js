@@ -30,6 +30,7 @@ async function execute(args){
 
 async function restart(){
 	let target = await configuration.get();
+	if (!target) throw "no activated target";
 	console.log(`Restart target "${target.host}"`);
 	await https.PUT("/~/dev/0/fb/develop/dp/restart/dat/value",true);
 }
