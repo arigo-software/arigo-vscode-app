@@ -90,7 +90,7 @@ async function execute(args){
 			i++;
 		}else showHelp(`Unknown option "${args[i]}."`);
 	}
-	console.log(`Setup Visual Studion Code for target "${target.host}"`);
+	console.log(`Setup Visual Studio Code for target "${target.host}"`);
 	await setupTarget(target);
 }
 
